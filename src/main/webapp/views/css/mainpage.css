@@ -1,0 +1,39 @@
+.login-button{
+    border-radius: 3px;
+    padding: 5px 20px;
+    margin-left: 7px;
+    margin-right: 7px;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    background-color: blue;
+}
+
+
+.login-button:hover{
+    background-color: darkgreen;
+    cursor: pointer;
+}
+
+.header {
+    border-collapse: collapse;
+}
+
+.header td {
+    border: none;
+}
+
+.board {
+    position: absolute;
+    width: 640px;
+    height: 640px;
+    background-image: url("/views/img/board.svg");
+}
+
+.white_pawn{
+    position: absolute;
+    width: 12.5%;
+    height: 12.5%;
+    top: 0;
+    left: 0;
+    background-image: url("/views/img/pieces/white/pawn.svg");
+    background-size: cover;
+}
