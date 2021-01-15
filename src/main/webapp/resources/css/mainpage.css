@@ -1,0 +1,93 @@
+.login-button{
+    border-radius: 3px;
+    padding: 5px 20px;
+    margin-left: 7px;
+    margin-right: 7px;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    background-color: blue;
+}
+
+
+.login-button:hover{
+    background-color: darkgreen;
+    cursor: pointer;
+}
+
+.header {
+    border-collapse: collapse;
+}
+
+.header td {
+    border: none;
+}
+
+.board {
+    position: absolute;
+    width: 640px;
+    height: 640px;
+    background-image: url("/resources/img/board.svg");
+}
+
+.piece{
+    user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    background-size: cover;
+    position: absolute;
+    width: 12.5%;
+    height: 12.5%;
+    top: 0;
+    left: 0;
+}
+.white_pawn{
+    background-image: url("/resources/img/pieces/white/pawn.svg");
+}
+
+.white_king{
+    background-image: url("/resources/img/pieces/white/king.svg");
+}
+
+.white_knight{
+    background-image: url("/resources/img/pieces/white/knight.svg");
+}
+
+.white_bishop{
+    background-image: url("/resources/img/pieces/white/bishop.svg");
+}
+
+.white_rook{
+    background-image: url("/resources/img/pieces/white/rook.svg");
+}
+
+.white_queen{
+    background-image: url("/resources/img/pieces/white/queen.svg");
+}
+
+
+.black_pawn{
+    background-image: url("/resources/img/pieces/black/pawn.svg");
+}
+
+.black_king{
+    background-image: url("/resources/img/pieces/black/king.svg");
+}
+
+.black_knight{
+    background-image: url("/resources/img/pieces/black/knight.svg");
+}
+
+.black_bishop{
+    background-image: url("/resources/img/pieces/black/bishop.svg");
+}
+
+.black_rook{
+    background-image: url("/resources/img/pieces/black/rook.svg");
+}
+
+.black_queen{
+    background-image: url("/resources/img/pieces/black/queen.svg");
+}
+
