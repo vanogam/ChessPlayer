@@ -3,37 +3,49 @@
 
 class Board extends React.Component{
     state = {
-        pieces: []
+        pieces: [],
+        myuser: "You",
+        rating: 1200
+    }
+
+    constructor(props) {
+        super(props);
+        this.state.myuser = props.user
+        this.state.rating = props.rating
     }
 
     componentDidMount() {
-       /* let th = this
-        fetch("/board", {method: 'POST'})
-            .then(function (request) {
-                console.log(response)
-                let tokens = response.split(", ")
-                for(const token of tokens) {
-                    let obj = JSON.parse(token)
-                    th.state.pieces.push(new Piece(obj.name, obj.color, obj.x, obj.y))
-                    th.render()
-                }
-            })*/
+
         let th = this
+        let request1 = new XMLHttpRequest()
+        request1.open("POST", "/getuserinfo", true)
+        request1.onreadystatechange= function () {
+            if (this.readyState === 4 && this.status === 200) {
+                if (request.responseText == null || request.responseText.length === 0){
+                    th.setState({user: ""})
+                }
+                else {
+                    let tokens = request.responseText.split(",")
+                    th.setState({user: tokens[0], rating: tokens[1]})
+
+                }
+            }
+        }
+        request1.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        request1.send("")
+
         let request = new XMLHttpRequest()
         request.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200){
 
-                console.log(request.responseText)
                 let tokens = request.responseText.split(", ")
                 let index = 0
-                let pieceArray = []
                 for(const token of tokens) {
                     if (token.length < 3) {
                         index ++
                         continue
                     }
                     let obj = JSON.parse(token)
-                    console.log(token)
                     th.state.pieces.push(<Piece index={index ++}
                                            color={obj.color}
                                            name={obj.name}
@@ -61,8 +73,7 @@ class Board extends React.Component{
 
 
     render() {
-        console.log(this.state.pieces.length)
-        return <div id="chessboard" className="board"/>;
+        return <div className={'board-container'}><div>Opponent</div><div id="chessboard" className="board"/><div>{this.state.myuser}</div></div>;
 
     }
 

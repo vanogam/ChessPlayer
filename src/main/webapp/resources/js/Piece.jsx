@@ -19,7 +19,6 @@ class Piece extends React.Component {
 
     constructor(props) {
         super(props);
-        console.log(props)
         this.state.color = props.color
         this.state.index = props.index
         this.state.key = props.index
@@ -50,7 +49,6 @@ class Piece extends React.Component {
                 if(Piece.pickedPiece != null){
                     let X = Math.floor(Piece.pickedPiece.state.x + 0.5)
                     let Y = Math.floor(Piece.pickedPiece.state.y + 0.5)
-                    console.log(X , Y)
                     if(X >= 8 || Y >= 8) {
                         Piece.pickedPiece.setState({x: Piece.oldX, y: Piece.oldY, picked: false})
                         Piece.pickedPiece = null
@@ -64,7 +62,6 @@ class Piece extends React.Component {
                     let request = new XMLHttpRequest()
                     request.onreadystatechange = function () {
                         if (this.readyState === 4 && this.status === 200){
-                            console.log(request.responseText + "!!")
                             let tokens = request.responseText.split("&")
                             if (tokens[0] === "1") {
                                 Piece.pickedPiece.setState({x: X, y: Y, picked: false})
@@ -110,7 +107,6 @@ class Piece extends React.Component {
             marginLeft: x
         }} id={figureId} key={this.state.index} className={cls + (this.state.picked ? " picked" : "")}
         onMouseDown={() => {
-            console.log(Piece.pickedPiece)
             Piece.pickedPiece = th
             th.setState({picked: true})
             Piece.oldX = th.state.x

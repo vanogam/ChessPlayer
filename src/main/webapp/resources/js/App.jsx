@@ -32,7 +32,6 @@ class App extends React.Component {
     render() {
         let th = this
 
-        console.log(this.state.user)
 
         return (<div>
                     <table id={'nav'} className={'navbar'}>
@@ -74,7 +73,6 @@ class App extends React.Component {
                                 <td className="icon navbar-button" onClick={
                                     () => {
                                         let x = document.getElementById("nav");
-                                        console.log(x)
                                         if (x.className === "navbar") {
                                             x.className += " responsive";
                                         } else {
@@ -91,7 +89,7 @@ class App extends React.Component {
                         : this.state.page === 'register' ? (<LoginForm type={'register'}/>)
                         : this.state.page === 'profile' ? (<Profile name={this.state.name}
                                                                     user={this.state.user}
-                                                                    rating={this.state.rating}/>) : <Board/>
+                                                                    rating={this.state.rating}/>) : <Board user={this.state.user}/>
                     }</div>);
     }
 

@@ -96,7 +96,6 @@ class LoginForm extends React.Component {
                                         request.onreadystatechange = function () {
                                             if (this.readyState === 4 && this.status === 200) {
 
-                                                console.log(request.responseText)
                                                 switch (request.responseText) {
                                                     case "0":
                                                         th.successfulLogin();

@@ -8,40 +8,30 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Component
 public class UserService {
 
-    @Autowired
-    PersistenceManager persistenceManager;
+    private static final Map<String, SystemUser> USER_MAP = new HashMap<>();
 
     @Autowired
     HttpSession session;
 
-
     private final static String userAttrName = "user";
 
     public void register(SystemUser user) throws ChessPlayerException {
-        EntityManager em = persistenceManager.getEntityManager();
         if (getUserByUsername(user.getUsername()) != null) {
             throw new ChessPlayerException("userAlreadyExists");
         }
         user.setPassword(DigestUtils.sha1Hex(user.getPassword()));
-        em.getTransaction().begin();
-        em.merge(user);
-        em.getTransaction().commit();
+        USER_MAP.put(user.getUsername(), user);
     }
 
     private SystemUser getUserByUsername(String username) {
-        List<SystemUser> users = persistenceManager.getEntityManager().createQuery("SELECT su FROM SystemUser su WHERE su.username = :username", SystemUser.class)
-                .setParameter("username", username)
-                .getResultList();
-
-        if (users.size() == 0) {
-            return null;
-        }
-        return users.get(0);
+        return USER_MAP.get(username);
     }
 
     public SystemUser getCurrentUser() {

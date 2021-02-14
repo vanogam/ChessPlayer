@@ -51,7 +51,7 @@
 
 .navbar-button{
     padding: 5px 20px;
-    /* border-left: solid 1px #696969; */
+     border-left: solid 1px #696969;
     border-right: solid 1px #696969;
     user-select: none;
     /* margin-left: 7px; */
