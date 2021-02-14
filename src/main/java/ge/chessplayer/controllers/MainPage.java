@@ -1,15 +1,17 @@
 package ge.chessplayer.controllers;
 
-import ge.chessplayer.model.Board;
-import ge.chessplayer.model.Piece;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import ge.chessplayer.model.chess.Board;
+import ge.chessplayer.model.chess.Piece;
+import ge.chessplayer.model.chess.PieceColor;
+import ge.chessplayer.model.chess.PieceType;
+import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class MainPage {
@@ -19,7 +21,14 @@ public class MainPage {
         Board.instance = new Board(Board.STARTING_POSITION);
 
         model.addAttribute("board", Board.instance);
-
+        System.out.println(getBoard());
         return "abc";
+    }
+
+    @PostMapping(path = "/board")
+    @ResponseBody
+    public String getBoard() {
+
+        return Board.instance.toJson();
     }
 }

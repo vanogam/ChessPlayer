@@ -3,40 +3,58 @@
 <%@ page import="ge.chessplayer.controllers.MainPage" %>
 <%@ page isELIgnored="false" %>
 
-<html onmousemove="movePiece(event)"  onmouseup="placePiece(event)">
+
+<html>
+
+
     <head>
         <link rel="stylesheet" href="../../resources/css/mainpage.css">
         <title>Chess</title>
-    </head>
-    <body style="margin: 0; overflow: hidden;">
-        <table class="header">
-            <tr style="height: 50px; width: 100%; background-color: lightgrey">
-                <td style="width: 100%;">temporary styles</td>
 
+    </head>
+
+
+
+    <body class="body" style="margin: 0; overflow: hidden;">
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <table class="navbar">
+        <tr>
+            <td style="width: 100%;">temporary styles</td>
+
+            <td class="navbar-button">
+                <div>Login</div>
+            </td>
+            <td class="navbar-button">
+                <div>Register</div>
+            </td>
+        </tr>
+    </table>
+    <div id = "root" class="board_container"></div>
+
+    <script src="../../resources/js/board.jsx" type="text/babel"></script>
+    <script src="../../resources/js/Piece.jsx" type="text/babel"></script>
+
+
+       <!-- <table class="header">
+         <div id="figure_${index}" class="piece ${piece.color}_${piece.name}" style="transform: translate(${piece.position.y*100}%, ${piece.position.x*100}%);" onmousedown="pickup('figure_${index}')"></div>
+
+               <tr>
                 <td>
-                    <div class="login-button">Login</div>
-                </td>
-                <td>
-                    <div class="login-button">Register</div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div id="chessboard" class="board">
-                        <%--@elvariable id="board" type="ge.chessplayer.model.Board"--%>
-                        <c:set value="0" var="index"/>
-                        <c:forEach items="${board.pieces}" var="piece">
-                            <c:if test="${piece != null}">
-                                <div id="figure_${index}" class="piece ${piece.color}_${piece.name}" style="transform: translate(${piece.position.y*100}%, ${piece.position.x*100}%);" onmousedown="pickup('figure_${index}')"></div>
-                            </c:if>
-                            <c:set var="index" value="${index + 1}"/>
-                        </c:forEach>
-                    </div>
+
+                        <div class="player-name">user1</div>
+                        <div id="chessboard" class="board">
+                            <%--@elvariable id="board" type="ge.chessplayer.model.chess.Board"--%>
+
+                        </div>
+                        <div class="player-name">user2</div>
                 </td>
 
             </tr>
         </table>
-    </body>
+    </body>-->
     <script>
         /*const PieceTypes = {
             WHITE_PAWN: 'white_pawn',
@@ -61,8 +79,7 @@
             xhttp.send()
         }
         initialArrangement()
-        */
-        let pickedPiece
+
 
         let board = document.getElementById("chessboard")
         let oldPosition
@@ -146,4 +163,5 @@
 
         }*/
     </script>
+    </body>
 </html>

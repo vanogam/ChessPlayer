@@ -10,8 +10,18 @@
     <mvc:resources mapping="/resources/**" location="/resources/" />
 
 
+
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>
         <property name="suffix" value=".jsp"/>
+    </bean>
+
+
+    <bean id="db" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource">
+    <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+    <property name="url" value="jdbc:mysql://localhost:3306/chessplayer?useUnicode=yes&amp;characterEncoding=utf8"/>
+    <property name="username" value="root"/>
+    <property name="password" value="pass1234"/>
+    <property name="initialSize" value="3"/>
     </bean>
 </beans>

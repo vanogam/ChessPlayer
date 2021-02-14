@@ -1,10 +1,8 @@
 package ge.chessplayer.utils;
 
-import ge.chessplayer.model.Piece;
-import ge.chessplayer.model.PieceType;
-import ge.chessplayer.model.Point;
+import ge.chessplayer.model.chess.Piece;
+import ge.chessplayer.model.chess.Point;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class ChessUtils {

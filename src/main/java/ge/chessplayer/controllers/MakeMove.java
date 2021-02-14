@@ -1,8 +1,8 @@
 package ge.chessplayer.controllers;
 
-import ge.chessplayer.model.Board;
-import ge.chessplayer.model.Piece;
-import ge.chessplayer.model.Point;
+import ge.chessplayer.model.chess.Board;
+import ge.chessplayer.model.chess.Piece;
+import ge.chessplayer.model.chess.Point;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;

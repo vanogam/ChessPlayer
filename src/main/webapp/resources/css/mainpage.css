@@ -1,15 +1,29 @@
-.login-button{
-    border-radius: 3px;
+.body{
+    margin: 0; overflow: hidden;background-color: #222629;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.navbar{
+    height: 40px;
+    width: 100%;
+    background-color: #86C232;
+    border: 0;
+    border-collapse: collapse;
+}
+
+.navbar-button{
     padding: 5px 20px;
+    border-left: solid 1px #696969;
+    border-right: solid 1px #696969;
+    user-select: none;
     margin-left: 7px;
     margin-right: 7px;
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
-    background-color: blue;
 }
 
 
-.login-button:hover{
-    background-color: darkgreen;
+.navbar-button:hover{
+    z-index: 10;
+    background-color: #61892F;
     cursor: pointer;
 }
 
@@ -17,17 +31,25 @@
     border-collapse: collapse;
 }
 
-.header td {
-    border: none;
+.player-name{
+    font-weight: bold;
+    font-size: 20px;
+    color: dimgrey;
+    padding: 5px 10px;
 }
 
 .board {
-    position: absolute;
-    width: 640px;
-    height: 640px;
+    margin: 10px;
+    position: relative;
+
+    width: min(100%, 500px);
+    padding-bottom: min(100%, 500px);
     background-image: url("/resources/img/board.svg");
 }
 
+.board_container{
+    max-height: 300px;
+}
 .piece{
     user-drag: none;
     user-select: none;
@@ -41,6 +63,10 @@
     height: 12.5%;
     top: 0;
     left: 0;
+}
+
+.picked{
+    z-index: 2;
 }
 .white_pawn{
     background-image: url("/resources/img/pieces/white/pawn.svg");
