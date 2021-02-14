@@ -8,7 +8,8 @@ class Piece extends React.Component {
         name: "",
         x: 0,
         y: 0,
-        picked: false
+        picked: false,
+        board: null
     }
     static pickedPiece = null
     static oldX = 0
@@ -25,6 +26,8 @@ class Piece extends React.Component {
         this.state.name = props.name
         this.state.x = props.x
         this.state.y = props.y
+        this.state.board = props.board
+
     }
 
     componentDidMount() {

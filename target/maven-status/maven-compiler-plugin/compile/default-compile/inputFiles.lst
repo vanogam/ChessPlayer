@@ -1,11 +1,12 @@
+C:\Users\AzRy\Desktop\uni\frontend\ChessPlayer\src\main\java\ge\chessplayer\components\PersistenceManager.java
 C:\Users\AzRy\Desktop\uni\frontend\ChessPlayer\src\main\java\ge\chessplayer\components\UserService.java
 C:\Users\AzRy\Desktop\uni\frontend\ChessPlayer\src\main\java\ge\chessplayer\controllers\MainPage.java
 C:\Users\AzRy\Desktop\uni\frontend\ChessPlayer\src\main\java\ge\chessplayer\model\chess\pieces\Pawn.java
+C:\Users\AzRy\Desktop\uni\frontend\ChessPlayer\src\main\java\ge\chessplayer\controllers\UserController.java
 C:\Users\AzRy\Desktop\uni\frontend\ChessPlayer\src\main\java\ge\chessplayer\model\user\SystemUser.java
 C:\Users\AzRy\Desktop\uni\frontend\ChessPlayer\src\main\java\ge\chessplayer\utils\ChessUtils.java
 C:\Users\AzRy\Desktop\uni\frontend\ChessPlayer\src\main\java\ge\chessplayer\model\chess\pieces\Knight.java
 C:\Users\AzRy\Desktop\uni\frontend\ChessPlayer\src\main\java\ge\chessplayer\model\chess\pieces\Bishop.java
-C:\Users\AzRy\Desktop\uni\frontend\ChessPlayer\src\main\java\ge\chessplayer\model\user\SystemUserRole.java
 C:\Users\AzRy\Desktop\uni\frontend\ChessPlayer\src\main\java\ge\chessplayer\exception\ChessPlayerException.java
 C:\Users\AzRy\Desktop\uni\frontend\ChessPlayer\src\main\java\ge\chessplayer\model\chess\pieces\Queen.java
 C:\Users\AzRy\Desktop\uni\frontend\ChessPlayer\src\main\java\ge\chessplayer\controllers\MakeMove.java

@@ -3,34 +3,38 @@ package ge.chessplayer.components;
 import ge.chessplayer.exception.ChessPlayerException;
 import ge.chessplayer.model.user.SystemUser;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Component
 public class UserService {
 
-    @PersistenceContext
-    EntityManager em;
+    @Autowired
+    PersistenceManager persistenceManager;
+
+    @Autowired
+    HttpSession session;
+
+
+    private final static String userAttrName = "user";
 
     public void register(SystemUser user) throws ChessPlayerException {
+        EntityManager em = persistenceManager.getEntityManager();
         if (getUserByUsername(user.getUsername()) != null) {
             throw new ChessPlayerException("userAlreadyExists");
         }
         user.setPassword(DigestUtils.sha1Hex(user.getPassword()));
-        em.persist(user);
+        em.getTransaction().begin();
+        em.merge(user);
+        em.getTransaction().commit();
     }
 
     private SystemUser getUserByUsername(String username) {
-        List<SystemUser> users = em.createQuery("SELECT su FROM SystemUser su WHERE su.username = :username", SystemUser.class)
+        List<SystemUser> users = persistenceManager.getEntityManager().createQuery("SELECT su FROM SystemUser su WHERE su.username = :username", SystemUser.class)
                 .setParameter("username", username)
                 .getResultList();
 
@@ -40,13 +44,20 @@ public class UserService {
         return users.get(0);
     }
 
-    public static UserDetails currentUserDetails(){
-        SecurityContext securityContext = SecurityContextHolder.getContext();
-        Authentication authentication = securityContext.getAuthentication();
-        if (authentication != null) {
-            Object principal = authentication.getPrincipal();
-            return principal instanceof UserDetails ? (UserDetails) principal : null;
+    public SystemUser getCurrentUser() {
+        return (SystemUser) session.getAttribute(userAttrName);
+    }
+
+    public void login(String username, String password) throws ChessPlayerException {
+        SystemUser user = getUserByUsername(username);
+        if (user == null) {
+            throw new ChessPlayerException("Invalid username/password combination");
         }
-        return null;
+        else {
+            if (!DigestUtils.sha1Hex(password).equals(user.getPassword())) {
+                throw new ChessPlayerException("Invalid username/password combination");
+            }
+        }
+        session.setAttribute(userAttrName, user);
     }
 }

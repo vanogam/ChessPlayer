@@ -34,15 +34,16 @@ class Board extends React.Component{
                     }
                     let obj = JSON.parse(token)
                     console.log(token)
-                    pieceArray.push(<Piece index={index ++}
+                    th.state.pieces.push(<Piece index={index ++}
                                            color={obj.color}
                                            name={obj.name}
                                            x={obj.x}
-                                           y={obj.y}/>)
+                                           y={obj.y}
+                                           board={th}/>)
                     //th.state.pieces.push(new Piece(index ++, obj.color, obj.name, obj.x, obj.y))
 
                 }
-                ReactDOM.render(<div>{pieceArray}</div>, document.getElementById("chessboard"))
+                ReactDOM.render(<div>{th.state.pieces}</div>, document.getElementById("chessboard"))
                 th.forceUpdate()
             }
 
@@ -58,25 +59,14 @@ class Board extends React.Component{
     }
 
 
-    putPieces() {
-        let ans = []
-        for(const piece of this.state.pieces) {
-            ans.push(piece.render())
-        }
-
-        return ans
-    }
 
     render() {
-
         console.log(this.state.pieces.length)
-        if (this.state.pieces.length === 0) return <div id="chessboard" className="board"/>
-        console.log(this.putPieces())
-        return <div id="chessboard" className="board">{this.putPieces()}</div>;
+        return <div id="chessboard" className="board"/>;
 
     }
 
 
 
 }
-ReactDOM.render(<Board/>, document.getElementById("root"));
+//ReactDOM.render(<Board/>, document.getElementById("root"));

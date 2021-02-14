@@ -1,6 +1,7 @@
 package ge.chessplayer.model.chess;
 
 import ge.chessplayer.model.chess.pieces.*;
+import ge.chessplayer.model.user.SystemUser;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -11,8 +12,8 @@ public class Board implements Serializable {
             new Rook(PieceColor.WHITE, 0, 0),
             new Knight(PieceColor.WHITE, 0, 1),
             new Bishop(PieceColor.WHITE, 0, 2),
-            new Queen(PieceColor.WHITE, 0, 3),
             new King(PieceColor.WHITE, 0, 4),
+            new Queen(PieceColor.WHITE, 0, 3),
             new Bishop(PieceColor.WHITE, 0, 5),
             new Knight(PieceColor.WHITE, 0, 6),
             new Rook(PieceColor.WHITE, 0, 7),
@@ -30,8 +31,8 @@ public class Board implements Serializable {
             new Rook(PieceColor.BLACK, 7, 0),
             new Knight(PieceColor.BLACK, 7, 1),
             new Bishop(PieceColor.BLACK, 7, 2),
-            new Queen(PieceColor.BLACK, 7, 3),
             new King(PieceColor.BLACK, 7, 4),
+            new Queen(PieceColor.BLACK, 7, 3),
             new Bishop(PieceColor.BLACK, 7, 5),
             new Knight(PieceColor.BLACK, 7, 6),
             new Rook(PieceColor.BLACK, 7, 7),
@@ -53,7 +54,17 @@ public class Board implements Serializable {
 
     private static int maxId = 0;
 
+    private SystemUser whitePlayer;
+
+    private SystemUser blackPlayer;
+
+    private int whiteTimeMillis;
+
+    private int blackTimeMillis;
+
     public static Board instance;
+
+
 
     public Board(List<Piece> pieceList) {
         piecesList = pieceList;

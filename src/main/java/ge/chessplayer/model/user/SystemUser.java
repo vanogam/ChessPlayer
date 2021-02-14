@@ -1,13 +1,10 @@
 package ge.chessplayer.model.user;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.List;
 
 @Entity
-public class SystemUser implements UserDetails {
+public class SystemUser {
 
     public static final int STARTING_RATING = 1200;
 
@@ -24,42 +21,34 @@ public class SystemUser implements UserDetails {
 
     String lastName;
 
-    SystemUserRole role = SystemUserRole.USER;
+    List<SystemUser> friends;
 
-    @Override
-    @Transient
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+    public static int getStartingRating() {
+        return STARTING_RATING;
     }
 
-
-    @Override
-    @Transient
-    public boolean isAccountNonExpired() {
-        return false;
+    @OneToMany(fetch = FetchType.EAGER)
+    public List<SystemUser> getFriends() {
+        return friends;
     }
 
-    @Override
-    @Transient
-    public boolean isAccountNonLocked() {
-        return true;
+    public void setFriends(List<SystemUser> friends) {
+        this.friends = friends;
     }
 
-    @Override
-    @Transient
-    public boolean isCredentialsNonExpired() {
-        return true;
+    public SystemUser() {
+
     }
 
-    @Override
-    @Transient
-    public boolean isEnabled() {
-        return true;
+    public SystemUser(String username, String password, String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
     }
-
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long getId() {
         return id;
     }
@@ -69,7 +58,6 @@ public class SystemUser implements UserDetails {
     }
 
     @Column
-    @Override
     public String getUsername() {
         return username;
     }
@@ -79,7 +67,6 @@ public class SystemUser implements UserDetails {
     }
 
     @Column
-    @Override
     public String getPassword() {
         return password;
     }
@@ -115,12 +102,4 @@ public class SystemUser implements UserDetails {
         this.lastName = lastName;
     }
 
-    @Enumerated(EnumType.STRING)
-    public SystemUserRole getRole() {
-        return role;
-    }
-
-    public void setRole(SystemUserRole role) {
-        this.role = role;
-    }
 }

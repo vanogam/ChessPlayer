@@ -8,6 +8,7 @@
 
 
     <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="../../resources/css/mainpage.css">
         <title>Chess</title>
 
@@ -20,9 +21,8 @@
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
-    <table class="navbar">
+    <!--<table class="navbar">
         <tr>
-            <td style="width: 100%;">temporary styles</td>
 
             <td class="navbar-button">
                 <div>Login</div>
@@ -32,11 +32,18 @@
             </td>
         </tr>
     </table>
-    <div id = "root" class="board_container"></div>
+    <script src="../../resources/js/LoginForm.jsx" type="text/babel"></script>-->
+    <div id = "root" class="board_container">
+    </div>
+    <div id = "popup-container" class="board_container"></div>
 
+
+
+    <script src="../../resources/js/profile.jsx" type="text/babel"></script>
+    <script src="../../resources/js/LoginForm.jsx" type="text/babel"></script>
     <script src="../../resources/js/board.jsx" type="text/babel"></script>
     <script src="../../resources/js/Piece.jsx" type="text/babel"></script>
-
+    <script src="../../resources/js/App.jsx" type="text/babel"></script>
 
        <!-- <table class="header">
          <div id="figure_${index}" class="piece ${piece.color}_${piece.name}" style="transform: translate(${piece.position.y*100}%, ${piece.position.x*100}%);" onmousedown="pickup('figure_${index}')"></div>
