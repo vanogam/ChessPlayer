@@ -31,4 +31,12 @@ public class MainPage {
 
         return Board.instance.toJson();
     }
+
+
+    @GetMapping(path = "/favicon.ico")
+    @ResponseBody
+    public String getIcon() {
+
+        return "";
+    }
 }
