@@ -127,13 +127,9 @@
         </plugin>
 
         <plugin>
-          <groupId>org.apache.tomcat.maven</groupId>
-          <artifactId>tomcat7-maven-plugin</artifactId>
-          <version>2.2</version>
-          <configuration>
-            <port>80</port>
-            <path>/</path>
-          </configuration>
+          <groupId>com.heroku.sdk</groupId>
+          <artifactId>heroku-maven-plugin</artifactId>
+          <version>3.0.3</version>
         </plugin>
 
       </plugins>
